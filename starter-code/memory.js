@@ -99,6 +99,9 @@ $(document).ready(function(){
 
   $(".card").on("click", function() {
     console.log($(this).attr("id"));
+    console.log($(this).attr("class"));
+    $(this).children().toggleClass("back");
+    var cardId = $(this).attr("id");
     if ($(this).hasClass("back")) {
       $(this).removeClass("back");
       $(this).addClass("front");
@@ -109,6 +112,7 @@ $(document).ready(function(){
       $(".card").removeClass("visible");
       $(".card").addClass("back");
     }
+        console.log($(this).attr("class"));
   });
 
 
