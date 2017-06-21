@@ -33,6 +33,41 @@ var MemoryGame = function() {
     this.correctPairs = 0;
 };
 
+
+MemoryGame.prototype._shuffleCards = function() {
+  var i = 0;
+  var j = 0;
+  var temp = null;
+  for (i = this.cards.length - 1; i > 0; i -= 1) {
+    j = Math.floor(Math.random() * (i + 1));
+    temp = this.cards[i];
+    this.cards[i] = this.cards[j];
+    this.cards[j] = temp;
+  }
+};
+
+
+MemoryGame.prototype.selectCard = function(card) {
+//select cards
+if (this.selectedCards.length === 0) {
+  //remove back and show front
+
+}
+
+
+//increase pairs clicked + manipulate DOM
+this.pairsClicked +=1;
+//Compare selected cards:
+if (this.selectedCards[0].name === this.selectedCards[1].name) {
+  this.correctPairs +=1;
+};
+
+
+//Add to array
+
+};
+
+
 // //******************************************************************
 // // HTML/CSS Interactions
 // //******************************************************************
@@ -52,7 +87,7 @@ $(document).ready(function(){
     html += '    id="'       + pic.img +  '">';
     html += '</div>';
     html += '<div class="front" ';
-    html += 'style="background: url(img/' + pic.img + '") no-repeat"';
+    html += 'style="background: url(\'img/' + pic.img + '\') no-repeat"';
     html += '    id="'       + pic.img +  '">';
     html += '</div>';
     html += '</div>';
@@ -61,3 +96,26 @@ $(document).ready(function(){
   // Add all the divs to the HTML
   document.getElementById('memory_board').innerHTML = html;
 });
+
+
+$(".card").on("click", function() {
+  if ($(".card").hasClass("back")) {
+    $(".card").removeClass("back");
+    $(".card").addClass("front");
+    $(".card").addClass("visible");
+  }
+  else {
+    $(".card").removeClass("front");
+    $(".card").addClass("back");
+  }
+});
+
+// <div class="card" id="card_sanitizedName">
+//    <div class="back" name="img/pic.name" id="pic.img">
+//    </div>
+//    <div class="front" style="background: url(img/pic.img) no-repeat; width:71px; " id="pic.img"
+//    </div>
+// </div>
+
+
+//    html += 'width:71px; height:71px; float:left; margin:10px; padding:20px; font-size:64px;';
