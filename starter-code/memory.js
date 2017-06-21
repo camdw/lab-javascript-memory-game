@@ -95,26 +95,32 @@ $(document).ready(function(){
 
   // Add all the divs to the HTML
   document.getElementById('memory_board').innerHTML = html;
+
+
+  $(".card").on("click", function() {
+    console.log($(this).attr("id"));
+    if ($(this).hasClass("back")) {
+      $(this).removeClass("back");
+      $(this).addClass("front");
+      $(this).addClass("visible");
+    }
+    else {
+      $(".card").removeClass("front");
+      $(".card").removeClass("visible");
+      $(".card").addClass("back");
+    }
+  });
+
+
 });
 
 
-$(".card").on("click", function() {
-  if ($(".card").hasClass("back")) {
-    $(".card").removeClass("back");
-    $(".card").addClass("front");
-    $(".card").addClass("visible");
-  }
-  else {
-    $(".card").removeClass("front");
-    $(".card").removeClass("visible");
-    $(".card").addClass("back");
-  }
-});
+
 
 // <div class="card" id="card_sanitizedName">
 //    <div class="back" name="img/pic.name" id="pic.img">
 //    </div>
-//    <div class="front" style="background: url(img/pic.img) no-repeat; width:71px; " id="pic.img"
+//    <div class="front" style="background: url(img/pic.img) no-repeat" id="pic.img"
 //    </div>
 // </div>
 
