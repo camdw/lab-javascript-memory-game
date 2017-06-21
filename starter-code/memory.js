@@ -106,6 +106,7 @@ $(".card").on("click", function() {
   }
   else {
     $(".card").removeClass("front");
+    $(".card").removeClass("visible");
     $(".card").addClass("back");
   }
 });
